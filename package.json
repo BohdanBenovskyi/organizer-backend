@@ -2,13 +2,13 @@
   "name": "organizer-backend",
   "version": "1.0.0",
   "description": "Fastify Backend For Organizer App",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc -w",
-    "dev": "nodemon build/index.js",
     "start": "node build/index.js",
-    "start:build": "npm run build & npm run start"
+    "start:build": "npm run build && npm run start",
+    "start:dev": "nodemon --config nodemon.json"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   "author": "Bohdan Benovskyi",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.4.7",
     "fastify": "^5.2.2",
     "fastify-plugin": "^5.0.1",
     "nodemon": "^3.1.9"

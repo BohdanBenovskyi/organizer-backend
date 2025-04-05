@@ -1,11 +1,14 @@
-import Fastify, { FastifyServerOptions } from 'fastify'
+import fastify, { FastifyServerOptions, FastifyInstance } from 'fastify'
+import { statusRoutes } from './routes/status';
 
 export type AppOptions = Partial<FastifyServerOptions>;
 
-async function buildApp(options: AppOptions = {}) {
-  const fastify = Fastify(options);
+function buildApp(options: AppOptions = {}) {
+  const app = fastify(options);
 
-  return fastify;
+  app.register(statusRoutes);
+
+  return app;
 }
 
 export { buildApp }
