@@ -8,6 +8,8 @@ COPY ./package*.json ./
 
 COPY ./tsconfig.json ./
 
+COPY ./.husky ./.husky
+
 RUN npm install
 
 COPY . .

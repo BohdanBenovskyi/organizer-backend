@@ -1,7 +1,7 @@
 ## Local Run Commands
 
 ```bash
-docker build -t organizer-backend .
+docker build --no-cache -t organizer-backend .
 ```
 
 ```bash
