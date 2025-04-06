@@ -2,6 +2,6 @@
   "watch": ["src"],
   "ignore": ["node_modules"],
   "ext": "ts,json",
-  "exec": "tsc && node --enable-source-maps --inspect=0.0.0.0:9229 ./build/index.js",
+  "exec": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json && node --enable-source-maps --inspect=0.0.0.0:9229 ./build/index.js",
   "legacyWatch": true
 }
