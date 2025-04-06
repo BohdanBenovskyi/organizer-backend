@@ -4,11 +4,16 @@
   "description": "Fastify Backend For Organizer App",
   "main": "build/index.js",
   "scripts": {
-    "build": "tsc",
-    "build:watch": "tsc -w",
+    "build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
+    "build:watch": "tsc && (concurrently \"tsc -w\" \"tsc-alias -w\")",
     "start": "node build/index.js",
     "start:build": "npm run build && npm run start",
-    "start:dev": "nodemon --config nodemon.json"
+    "start:dev": "nodemon --config nodemon.json",
+    "lint": "eslint '**/*.{js,ts,jsx,tsx}' --fix",
+    "lint:check": "eslint '**/*.{js,ts,jsx,tsx}'",
+    "format": "prettier --write '**/*.{js,ts,jsx,tsx,json,md}'",
+    "format:check": "prettier --check '**/*.{js,ts,jsx,tsx,json,md}'",
+    "prepare": "node .husky/install.mjs"
   },
   "repository": {
     "type": "git",
@@ -23,8 +28,25 @@
     "nodemon": "^3.1.9"
   },
   "devDependencies": {
+    "@eslint/compat": "^1.2.8",
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.24.0",
     "@types/node": "^22.13.16",
     "@types/pino": "^7.0.4",
-    "typescript": "^5.8.2"
+    "@typescript-eslint/eslint-plugin": "^8.29.0",
+    "@typescript-eslint/parser": "^8.29.0",
+    "eslint": "^9.24.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-import-resolver-typescript": "^4.3.1",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jest": "^28.11.0",
+    "eslint-plugin-prettier": "^5.2.6",
+    "globals": "^16.0.0",
+    "husky": "^9.1.7",
+    "prettier": "^3.5.3",
+    "prettier-plugin-import-sort": "^0.0.7",
+    "tsc-alias": "^1.8.13",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.29.0"
   }
 }
